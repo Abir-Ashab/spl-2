@@ -1,82 +1,35 @@
-// Import necessary modules
-const express = require('express');
-const bodyParser = require('body-parser');
-const bcrypt = require('bcrypt');
-const { PrismaClient } = require('@prisma/client');
+const express = require('express')
+const mongoose = require('mongoose')
+const morgan = require('morgan')
+const bodyParser = require('body-parser')
+const EmployeeRoute = require("./routes/employee")
+const AuthRoute = require("./routes/auth")
+const cors = require('cors'); // Import the cors middleware
 
-// Initialize Express app
-const app = express();
-app.use(bodyParser.json());
-const cors = require('cors');
-app.use(cors());
-// Initialize Prisma client
-const prisma = new PrismaClient();
+mongoose.connect('mongodb+srv://shuvrocadet:xzSgLNfWlctcKzOm@cluster0.l2bvgvl.mongodb.net/')
+const db = mongoose.connection
 
-// Signup route
-app.post('/signup', async (req, res) => {
-    const { username, email, password } = req.body;
+db.on('error',(err)=> {
+    console.log(err)
+})
 
-    try {
-        // Check if user already exists
-        const existingUser = await prisma.user.findUnique({ where: { email } });
-        if (existingUser) {
-            return res.status(400).json({ message: 'User with this email already exists' });
-        }
+db.once('open',() => {
+    console.log('Db connection established!')
+})
 
-        // Hash the password
-        const hashedPassword = await bcrypt.hash(password, 10);
+const app = express()
 
-        // Save user to database
-        const newUser = await prisma.user.create({
-            data: {
-                username,
-                email,
-                password: hashedPassword
-            }
-        });
+app.use(cors())
+app.use(morgan('dev'))
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json())
 
-        res.status(201).json({ message: 'User created successfully', user: newUser });
-    } catch (error) {
-        console.error('Error creating user:', error);
-        res.status(500).json({ message: 'Internal server error' });
-    }
-});
+// Get all employees
+app.use('/api/employees', EmployeeRoute)
+app.use('/api/auth',AuthRoute)
 
-// Login route
-app.post('/login', async (req, res) => {
-    const { email, password } = req.body;
+const PORT = process.env.PORT || 3000
 
-    try {
-        // Find user by email
-        const user = await prisma.user.findUnique({ where: { email } });
-        if (!user) {
-            return res.status(404).json({ message: 'User not found' });
-        }
-
-        // Verify password
-        const passwordMatch = await bcrypt.compare(password, user.password);
-        if (!passwordMatch) {
-            return res.status(401).json({ message: 'Incorrect password' });
-        }
-
-        res.status(200).json({ message: 'Login successful', user });
-    } catch (error) {
-        console.error('Error logging in:', error);
-        res.status(500).json({ message: 'Internal server error' });
-    }
-});
-
-// GET request to retrieve all users
-app.get('/users', async (req, res) => {
-    try {
-        const users = await prisma.user.findMany();
-        res.status(200).json({ users });
-    } catch (error) {
-        console.error('Error retrieving users:', error);
-        res.status(500).json({ message: 'Internal server error' });
-    }
-});
-
-// Start server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, ()=>{
+    console.log(`Server is listening on port ${PORT}`)
+})
