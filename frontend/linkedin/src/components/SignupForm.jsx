@@ -1,30 +1,38 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom'; // Import useHistory
 import axios from 'axios';
 
 const SignupForm = () => {
   const [formData, setFormData] = useState({
-    username: '',
+    name: '',
     email: '',
     password: ''
   });
   const [message, setMessage] = useState('');
+  const history = useHistory(); // Initialize useHistory
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    console.log(formData);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => { // Move handleSubmit inside the component
+    e.preventDefault(); // Prevent form submission
+
     try {
-      const response = await axios.post('http://localhost:3000/signup', formData);
+      const response = await axios.post('http://localhost:3000/api/auth/register', formData);
       console.log(response.data);
       setMessage('Signup successful');
+      history.push('/login'); // Navigate to login page upon successful signup
     } catch (error) {
       console.error('Signup error:', error);
       setMessage('Signup failed');
     }
   };
+
+  useEffect(() => {
+    // No need to call handleSubmit here; it will be called when the form is submitted
+  }, []); // Empty dependency array means this effect only runs once, when the component mounts
 
   return (
     <div className="h-screen flex flex-col justify-center items-center bg-gray-100">
