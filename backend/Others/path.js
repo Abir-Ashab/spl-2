@@ -1,7 +1,7 @@
 const { MongoClient } = require('mongodb');
 
 // Connection URI
-const uri = 'mongodb+srv://niloy:31288932@cluster0.qhe3sti.mongodb.net/';
+const uri = 'mongodb+srv://shuvrocadet:xzSgLNfWlctcKzOm@cluster0.l2bvgvl.mongodb.net/';
 const dbName = 'test';
 const collectionName = 'employees';
 
@@ -31,6 +31,4 @@ async function getFilePathByEmail(email) {
       console.log('Connection closed');
     }
 }
-
-
 module.exports = getFilePathByEmail;
