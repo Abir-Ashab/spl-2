@@ -30,18 +30,16 @@ function questionAsync(question) {
   });
 }
 
-async function main() {
-  try {
-    const email = await questionAsync('Enter email: ');
-    console.log(`You entered: ${email}`);
-    const textToSummarize = await processFiles(email); 
-    console.log(textToSummarize); 
-    const query = `Extract different segments from this resume: ${textToSummarize}`;
-    await chat_complete(query); 
-  } catch (error) {
-    console.error('Error:', error.message);
-  } finally {
-    rl.close();
-  }
-}
-main();
+// async function main() {
+//   try {
+//     const email = await questionAsync('Enter email: ');
+//     const textToSummarize = await processFiles(email); 
+//     console.log(textToSummarize); 
+    
+//   } catch (error) {
+//     console.error('Error:', error.message);
+//   } finally {
+//     rl.close();
+//   }
+// }
+module.exports = chat_complete
