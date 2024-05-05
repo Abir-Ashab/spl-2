@@ -21,7 +21,7 @@ async function chat_complete(prompt) {
     ],
     temperature: 0.1,
   });
-  console.log(completion.choices[0]?.message?.content); // Logging instead of using process.stdout.write
+  return (completion.choices[0]?.message?.content); // Logging instead of using process.stdout.write
 }
 
 function questionAsync(question) {

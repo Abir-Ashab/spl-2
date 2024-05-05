@@ -1,4 +1,5 @@
 const Employee = require('../models/Employee')
+let inputData = "taka";
 
 const index =  async (req, res) => {
     try {
@@ -7,7 +8,6 @@ const index =  async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: "An error occurred while fetching employees" });
     }
-
 }
 
 const show = async (req, res) => {
@@ -91,8 +91,24 @@ const remove = async (req, res, next) => {
         });
     }
 };
+const data = async (req, res) => {
+    try {
+        // Retrieve data from the request body
+        inputData = req.body.data;
+    
+        // Process the data as needed
+        console.log('Received data:', inputData);
+    
+        // Send a success response
+        res.status(201).json({ message: 'Data received successfully' });
+      } catch (error) {
+        // Handle errors
+        console.error('Error:', error.message);
+        res.status(500).json({ message: 'An error occurred while processing the data' });
+      }
+}
 module.exports = {
-    index,show,store,update,remove
+    index,show,store, update,remove, data, inputData
 }
 
 
