@@ -30,7 +30,7 @@ const Navbar = () => {
     <nav className={isAuthorized ? "navbarShow" : "navbarHide"}>
       <div className="container">
         <div className="logo">
-          <img src="/JobZee-logos__white.png" alt="logo" />
+          <img src="/RecruitEase.png" alt="logo" />
         </div>
         <ul className={!show ? "menu" : "show-menu menu"}>
           <li>
@@ -52,14 +52,24 @@ const Navbar = () => {
           </li>
           {user && user.role === "Employer" ? (
             <>
+             <li>
+                <Link to={"/job/post"} onClick={() => setShow(false)}>
+                  POST JOB
+                </Link>
+              </li>
               <li>
                 <Link to={"http://localhost:3000/api/employees/skill"} onClick={() => setShow(false)}>
                   FIND SE GRADUATE
                 </Link>
               </li>
               <li>
+                <Link to={"http://localhost:5173/getData"} onClick={() => setShow(false)}>
+                  SEARCHING AND FILTERING
+                </Link>
+              </li>
+              <li>
                 <Link to={"/job/me"} onClick={() => setShow(false)}>
-                  VIEW YOUR JOBS
+                  VIEW POSTED JOBS
                 </Link>
               </li>
             </>

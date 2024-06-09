@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios'; // You can use axios for making HTTP requests
 import './DataInputForm.css'; // Import CSS file for styling
 
 function DataInputForm() {
@@ -10,12 +9,12 @@ function DataInputForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3000/api/employees/best_cv', {
+      const response = await fetch('http://localhost:3000/api/employees/send', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ data: inputValue }) // Ensure you're sending data as expected by the backend
+        body: JSON.stringify({ inputData: inputValue }) // Corrected data name
       });
       const data = await response.json();
       setResponseData(data.message); // Set only the message from the response
@@ -24,6 +23,7 @@ function DataInputForm() {
       setError(error.message);
     }
   };
+  
 
   return (
     <div className="form-container"> {/* Apply container class */}

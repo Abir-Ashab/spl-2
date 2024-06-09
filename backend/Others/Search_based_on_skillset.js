@@ -11,15 +11,23 @@ const Traverse = async (req, res) => {
             resume_list.push(resume);
         }
         console.log(resume_list);
-        const query = `Here you will only write partcipants name, email and contact for those who have software engineering background from the following resumes, don't write the name and email who doesn't have this ${resume_list}`;
+
+        const query = `Here you will give me the email address for those only who doesn't have software engineering background. You will find them from the following resumes ${resume_list}. No need any introductory sentence, just give me emails. Give me in normal text format. No need to use bold or next line (\n)`;
         const msg = await chat_complete(query); 
         console.log(msg);
+
         let finalText = msg.replace(/(\*\*|\n+)/g, " ");
-        finalText = finalText.replace(/\*/g, ' ');
-        res.json(finalText); 
+        finalText = finalText.replace(/\*/g, " ");
+
+        // Use a regular expression to extract email addresses
+        const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
+        const emailArray = finalText.match(emailRegex);
+
+        console.log(emailArray); // Log the array of emails
+
+        res.json(emailArray); // Respond with the array of emails
     } catch (error) {
         console.error('Error:', error.message);
-        // Send an error response
         res.status(500).json({ message: 'Internal Server Error' });
     }
 }

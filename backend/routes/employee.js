@@ -8,8 +8,7 @@ const select = require('../Others/Best_CV')
 const skillset = require('../Others/Search_based_on_skillset')
 const Traverse  = require('../controllers/TrvaerseController');
 
-router.post('/best_cv', Traverse.Traverse);
-router.post('/data', EmployeeController.data)
+router.post('/send', Traverse.Traverse);
 router.get('/best_cv', select.Traverse)
 router.get('/skill', skillset.Traverse)
 router.get('/', EmployeeController.index)
