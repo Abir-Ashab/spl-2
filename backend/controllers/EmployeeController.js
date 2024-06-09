@@ -32,11 +32,9 @@ const store = async (req, res, next) => {
             phone: req.body.phone,
             age: req.body.age
         });
-
         if (req.file) {
             employee.file = req.file.path;
         }
-
         const response = await employee.save();
         res.json({
             message: 'Employee added successfully',
@@ -110,5 +108,3 @@ const data = async (req, res) => {
 module.exports = {
     index,show,store, update,remove, data, inputData
 }
-
-

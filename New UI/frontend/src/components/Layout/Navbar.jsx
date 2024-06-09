@@ -59,17 +59,28 @@ const Navbar = () => {
               </li>
               <li>
                 <Link to={"http://localhost:3000/api/employees/skill"} onClick={() => setShow(false)}>
-                  FIND SE GRADUATE
+                 SE GRADUATE
+                </Link>
+              </li>
+              <li>
+                <Link to={"http://localhost:3000/api/employees/cp"} onClick={() => setShow(false)}>
+                  COMPETITIVE PROGRAMMER
+                </Link>
+              </li>
+              <li>
+                <Link to={"http://localhost:3000/api/employees/cg"} onClick={() => setShow(false)}>
+                  CGPA
                 </Link>
               </li>
               <li>
                 <Link to={"http://localhost:5173/getData"} onClick={() => setShow(false)}>
-                  SEARCHING AND FILTERING
+                  FILTERING
                 </Link>
               </li>
+              
               <li>
                 <Link to={"/job/me"} onClick={() => setShow(false)}>
-                  VIEW POSTED JOBS
+                  POSTED JOBS
                 </Link>
               </li>
             </>

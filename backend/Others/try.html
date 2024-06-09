@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open PDF on Button Click</title>
+</head>
+<body>
+    <h1>Open PDF</h1>
+    <ul>
+        <li><button id="open-pdf-button">Open CV Niloy</button></li>
+    </ul>
+
+    <script>
+        document.getElementById('open-pdf-button').addEventListener('click', function() {
+            // Replace the file path with the correct path to your PDF file
+            const pdfPath = '../uploads/Resume_Niloy-1717927928687-435225432.pdf';
+            window.open(pdfPath, '_blank');
+        });
+    </script>
+</body>
+</html>

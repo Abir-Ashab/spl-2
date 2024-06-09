@@ -1160,16 +1160,16 @@ nav .container {
   justify-content: space-between;
 }
 nav .container .logo {
-  width: 120px;
-  height: 120px;
+  width: 80px;
+  height: 80px;
 }
 nav .container .logo img {
-  width: 100%;
+  width: 90%;
   height: 100%;
 }
 nav .menu {
   display: flex;
-  gap: 25px;
+  gap: 18px;
   align-items: center;
 }
 nav .menu button {
@@ -1183,7 +1183,7 @@ nav .menu button {
 }
 nav .menu button:hover {
   color: #f1f3f6;
-  background: #184235;
+  background: #3f4218;
   transition: all 0.3s;
   cursor: pointer;
   font-weight: 500;
@@ -1197,13 +1197,13 @@ nav .menu li a {
   position: relative;
 }
 nav .menu li a:hover {
-  color: #2d5649;
+  color: #c8e684;
   transition: all 0.3s;
 }
 nav .menu li a::before {
   content: "";
   position: absolute;
-  background: #184235;
+  background: #c8e684;
   height: 1px;
   width: 100%;
   left: -100%;

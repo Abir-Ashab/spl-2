@@ -11,6 +11,8 @@ const Traverse  = require('../controllers/TrvaerseController');
 router.post('/send', Traverse.Traverse);
 router.get('/best_cv', select.Traverse)
 router.get('/skill', skillset.Traverse)
+router.get('/cp', skillset.CP)
+router.get('/cg', skillset.CG)
 router.get('/', EmployeeController.index)
 router.get('/:employeeId',EmployeeController.show)
 router.post('/',upload.single('file'), EmployeeController.store)

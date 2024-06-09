@@ -12,6 +12,7 @@ const rl = readline.createInterface({
 async function processFiles(email) {
       try {
         // Call the function and log the result
+        console.log(email);
         const pdfPath = "E:/spl-2/backend/" + await getFilePathByEmail(email);
         console.log(pdfPath);
 
@@ -20,7 +21,7 @@ async function processFiles(email) {
         console.log('Text extracted from PDF:');
         return text
       } catch (error) {
-        console.error('Error:', error.message);
+        console.error('Error:', error.message); 
       } finally {
         // Close readline interface
         rl.close();
