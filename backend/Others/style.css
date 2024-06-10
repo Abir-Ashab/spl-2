@@ -21,7 +21,7 @@ ul {
     padding: 0;
 }
 li {
-    background: #aae4c0;
+    background: #e0ee91;
     margin: 10px 0;
     padding: 15px;
     border-radius: 5px;
@@ -32,7 +32,7 @@ li {
 }
 a {
     text-decoration: none;
-    color: #0e0e0e;
+    color: #34020e;
     font-weight: bold;
 }
 a:hover {

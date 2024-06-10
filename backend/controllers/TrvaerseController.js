@@ -26,7 +26,7 @@ const Traverse = async (req, res) => {
         let finalText = msg.replace(/(\*\*|\n+)/g, " ");
         finalText = finalText.replace(/\*/g, " ");
         console.log(finalText);
-        res.json({ message: finalText });
+        res.json({ message: msg });
     } catch (error) {
         console.error('Error:', error.message);
         res.status(500).json({ message: 'Internal Server Error' });

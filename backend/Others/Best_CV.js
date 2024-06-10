@@ -11,13 +11,14 @@ const Traverse = async (req, res) => {
             resume_list.push(resume);
         }
         console.log(resume_list);
+        console.log("resumes koi?????");
         console.log(inputData);
-        const query = `${inputData} from the following resumes: ${resume_list}`;
+        const query = `${inputData} from the following resumes: ${resume_list}, no need to bold`;
         const msg = await chat_complete(query);  
         let finalText = msg.replace(/(\*\*|\n+)/g, " ");
         finalText = finalText.replace(/\*/g, " ");
-        console.log(finalText);
-        res.json(finalText); 
+        // console.log(finalText);
+        res.json(msg); 
     } catch (error) {
         console.error('Error:', error.message);
         // Send an error response

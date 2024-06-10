@@ -55,35 +55,66 @@ const Traverse = async (req, res) => {
         h1 {
             color: #333;
             text-align: center;
-            background: #abdbb2;
+            background: #4CAF50;
             margin: 10px 0;
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(200, 205, 144, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         ul {
             list-style-type: none;
             padding: 0;
         }
         li {
-            background: #aae4c0;
+            background: #8BC34A;
             margin: 10px 0;
             padding: 15px;
-            border-radius: 5px;
+            border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-weight: bold;
         }
         a {
             text-decoration: none;
-            color: #0e0e0e;
-            font-weight: bold;
+            color: #ffffff;
+            background-color: #333;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
         a:hover {
-            text-decoration: underline;
+            background-color: #555;
         }
-        
+        div.criteria {
+            margin-top: 20px;
+            color: #333;
+            text-align: left;
+            background: #aae4c0;
+            margin: 10px 0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .criteria ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .criteria li {
+            margin: 10px 0;
+            text-transform: uppercase;
+            background: #e0ee91;
+            font-weight: bold;
+        }        
+        .criteria p {
+            margin: 5px 0;
+            text-transform: uppercase;
+        }
+        h2 {
+            text-align : center;
+        }
         </style>
         </head>
         <body>
@@ -165,35 +196,66 @@ const CP = async (req, res) => {
         h1 {
             color: #333;
             text-align: center;
-            background: #abdbb2;
+            background: #4CAF50;
             margin: 10px 0;
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(200, 205, 144, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         ul {
             list-style-type: none;
             padding: 0;
         }
         li {
-            background: #aae4c0;
+            background: #8BC34A;
             margin: 10px 0;
             padding: 15px;
-            border-radius: 5px;
+            border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-weight: bold;
         }
         a {
             text-decoration: none;
-            color: #0e0e0e;
-            font-weight: bold;
+            color: #ffffff;
+            background-color: #333;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
         a:hover {
-            text-decoration: underline;
+            background-color: #555;
         }
-        
+        div.criteria {
+            margin-top: 20px;
+            color: #333;
+            text-align: left;
+            background: #aae4c0;
+            margin: 10px 0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .criteria ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .criteria li {
+            margin: 10px 0;
+            text-transform: uppercase;
+            background: #e0ee91;
+            font-weight: bold;
+        }        
+        .criteria p {
+            margin: 5px 0;
+            text-transform: uppercase;
+        }
+        h2 {
+            text-align : center;
+        }
         </style>
         </head>
         <body>
@@ -233,7 +295,19 @@ const CG = async (req, res) => {
         }
         console.log(resume_list);
 
-        const query = `Here you will give me the email address for those only who have high CGPA. Write the email of them in descending order. I repeat, in descending order. If possible, mention the CGPA along with the email. You will find them from the following resumes ${resume_list}. No need for any introductory sentence, just give me emails. Give me in normal text format. No need to use bold or next line (\n)`;
+        const query = `Here you will sort the CVs with their name and email address and cgpa of the applicants, not the person who refer the applicants or who was the supervisor.Only for the applicants. Write the email and name of them in sorted order. I repeat, in order.You will ordee the CV based on the skill.The criteria of best CV are : 
+
+        1)Competitive prgramming backgraound and achievement in codeforces or codechef or others platform or in ICPC
+        
+        2)Mentioanable projects
+        
+        3)Research experience
+        
+        4)CGPA
+
+        5)If not CS background then add them just normally
+
+        . You will find them from the following resumes ${resume_list}. No need for any introductory sentence. Give me in normal text format. No need to use bold or next line (\n)`;
         const msg = await chat_complete(query); 
         console.log(msg);
         
@@ -254,7 +328,7 @@ const CG = async (req, res) => {
         }
         
         console.log("Emails:", emailArray); // Log the array of emails
-        console.log("CGPAs:", cgpaArray);   // Log the array of CGPAs
+        
     
         const emails = await retrieveEmails();
         const pdfPaths = [];
@@ -286,46 +360,77 @@ const CG = async (req, res) => {
         h1 {
             color: #333;
             text-align: center;
-            background: #abdbb2;
+            background: #4CAF50;
             margin: 10px 0;
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(200, 205, 144, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         ul {
             list-style-type: none;
             padding: 0;
         }
         li {
-            background: #aae4c0;
+            background: #8BC34A;
             margin: 10px 0;
             padding: 15px;
-            border-radius: 5px;
+            border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-weight: bold;
         }
         a {
             text-decoration: none;
-            color: #0e0e0e;
-            font-weight: bold;
+            color: #ffffff;
+            background-color: #333;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
         a:hover {
-            text-decoration: underline;
+            background-color: #555;
         }
-        
+        div.criteria {
+            margin-top: 20px;
+            color: #333;
+            text-align: left;
+            background: #aae4c0;
+            margin: 10px 0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .criteria ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .criteria li {
+            margin: 10px 0;
+            text-transform: uppercase;
+            background: #e0ee91;
+            font-weight: bold;
+        }        
+        .criteria p {
+            margin: 5px 0;
+            text-transform: uppercase;
+        }
+        h2 {
+            text-align : center;
+        }
         </style>
         </head>
         <body>
-            <h1>CGPA</h1>
+            <h1>ORDER OF RESUMES</h1>
             <ul>
         `;
         
         for (let i = 0; i < emailArray.length; i++) {
             htmlResponse += `
                 <li>
-                    <span>Email : ${emailArray[i]} (CGPA : ${cgpaArray[i]})</span>
+                    <span>Email: ${emailArray[i]}</span>
                     <a href="${pdfPaths[i]}" target="_blank">RESUME</a>
                 </li>
             `;
@@ -333,9 +438,22 @@ const CG = async (req, res) => {
         
         htmlResponse += `
             </ul>
+            <div class="criteria">
+                <h2>CRITERIONS</h2>
+                <ul>
+                    <li>Competitive programming background</li>
+                    <li>Achievement in Codeforces, CodeChef, other platforms, or in ICPC</li>
+                    <li>Mentionable projects</li>
+                    <li>Research experience</li>
+                    <li>CGPA</li>
+                    <li>If not CS background then add them just normally</li>
+                </ul>
+            </div>
+        
         </body>
         </html>
         `;
+        
 
         res.send(htmlResponse);
     } catch (error) {

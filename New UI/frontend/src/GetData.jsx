@@ -23,12 +23,11 @@ function DataInputForm() {
       setError(error.message);
     }
   };
-  
 
   return (
     <div className="form-container"> {/* Apply container class */}
       <form onSubmit={handleSubmit} className="input-form"> {/* Apply input form class */}
-        <label htmlFor="dataInput">Enter Data:</label>
+        <label htmlFor="dataInput"><h4>WHAT DO YOU WANT?</h4></label>
         <input
           type="text"
           id="dataInput"
@@ -38,11 +37,12 @@ function DataInputForm() {
         />
         <button type="submit" className="submit-button">Submit</button> {/* Apply submit button class */}
       </form>
-      {error && <div>Error: {error}</div>}
+      {error && <div className="error-message">Error: {error}</div>}
       {responseData && (
-        <div>
-          <h2>Response:</h2>
-          <p>{responseData}</p> {/* Display only the message */}
+        <div className="response-container">
+          <ul className="response-list">
+            <p>{responseData}</p>
+          </ul>
         </div>
       )}
     </div>

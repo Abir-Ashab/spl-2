@@ -69,12 +69,12 @@ const Navbar = () => {
               </li>
               <li>
                 <Link to={"http://localhost:3000/api/employees/cg"} onClick={() => setShow(false)}>
-                  CGPA
+                  BEST CV
                 </Link>
               </li>
               <li>
                 <Link to={"http://localhost:5173/getData"} onClick={() => setShow(false)}>
-                  FILTERING
+                  FILTER
                 </Link>
               </li>
               
