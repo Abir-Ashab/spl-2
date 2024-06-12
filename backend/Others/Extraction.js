@@ -13,7 +13,7 @@ async function processFiles(email) {
       try {
         // Call the function and log the result
         console.log(email);
-        const pdfPath = "E:/spl-2/backend/" + await getFilePathByEmail(email);
+        const pdfPath = "E:/spl-2/Final UI/backend/" + await getFilePathByEmail(email);
         console.log(pdfPath);
 
         // Call the function to extract text from PDF

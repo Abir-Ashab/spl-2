@@ -1,22 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Open PDF on Button Click</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Options</title>
+  <style>
+    .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #2d2c30;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content li {
+    display: block;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+  </style>
 </head>
 <body>
-    <h1>Open PDF</h1>
     <ul>
-        <li><button id="open-pdf-button">Open CV Niloy</button></li>
+        <li><a href="home.html">Home</a></li>
+        <li class="dropdown">
+            <a href="#">About Me</a>
+            <ul class="dropdown-content">
+                <li><a href="personal_info.html">Personal Info</a></li>
+                <li><a href="educational_info.html">Educational Info</a></li>
+                <li><a href="work_info.html">Work Info</a></li>
+            </ul>
+        </li>
+        <li><a href="contact.html">Contact Me</a></li>
+        <li><a href="admin.html">Admin</a></li>
     </ul>
-
-    <script>
-        document.getElementById('open-pdf-button').addEventListener('click', function() {
-            // Replace the file path with the correct path to your PDF file
-            const pdfPath = '../uploads/Resume_Niloy-1717927928687-435225432.pdf';
-            window.open(pdfPath, '_blank');
-        });
-    </script>
 </body>
 </html>

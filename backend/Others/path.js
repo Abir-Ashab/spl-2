@@ -1,9 +1,9 @@
 const { MongoClient } = require('mongodb');
 
 // Connection URI
-const uri = 'mongodb+srv://shuvrocadet:xzSgLNfWlctcKzOm@cluster0.l2bvgvl.mongodb.net/';
+const uri = 'mongodb+srv://shuvrocadet:WuMwMvBNh5sKtbF4@cluster0.gkqwt8f.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 const dbName = 'test';
-const collectionName = 'employees';
+const collectionName = 'applications';
 
 // Define function to get file path based on email
 async function getFilePathByEmail(email) {
@@ -20,13 +20,13 @@ async function getFilePathByEmail(email) {
     console.log('Type of email:', typeof email);  // Log the type of email
 
     const employee = await collection.findOne({ email });
-
+    console.log(employee);
     if (!employee) {
       throw new Error('Employee not found');
     }
 
     // Extract specific file path based on email
-    const filePath = employee.file;
+    const filePath = employee.resume;
 
     return filePath;
   } finally {

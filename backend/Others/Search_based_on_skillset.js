@@ -16,7 +16,7 @@ const Traverse = async (req, res) => {
         const query = `Here you will give me the email address for those only who studied/studies software engineering.I repeat only software engineering graduates or students.You will find them from the following resumes ${resume_list}. No need any introductory sentence, just give me emails. Give me in normal text format. No need to use bold or next line (\n)`;
         const msg = await chat_complete(query); 
         console.log(msg);
-
+        
         let finalText = msg.replace(/(\*\*|\n+)/g, " ");
         finalText = finalText.replace(/\*/g, " ");
 

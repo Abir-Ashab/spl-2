@@ -20,11 +20,11 @@ const Traverse = async (req, res) => {
         }
 
         // Construct query
-        const query = `${inputData} from the following resmues -----> ${resume_list}`;
+        const query = `${inputData} from the following resmues -----> ${resume_list}. No need to bold anything`;
         console.log(inputData);
         const msg = await chat_complete(query);  
-        let finalText = msg.replace(/(\*\*|\n+)/g, " ");
-        finalText = finalText.replace(/\*/g, " ");
+        console.log(msg);
+        const finalText = msg.replace(/[*#]/g, "");
         console.log(finalText);
         res.json({ message: msg });
     } catch (error) {

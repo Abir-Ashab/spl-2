@@ -1,0 +1,76 @@
+/* Define styles for the Jobs page */
+.jobs-page {
+    padding: 20px;
+    background-color: hsl(200, 89%, 49%); /* Light gray background */
+  }
+  
+  /* Style the page title */
+  .page-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333; /* Dark gray text */
+  }
+  
+  /* Style the filters section */
+  .filters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  /* Style Select component */
+  .filters .ant-select-selector {
+    background-color: #ffffff; /* White background */
+    border-color: #d9d9d9; /* Light gray border */
+    color: #333; /* Dark gray text */
+  }
+  
+  /* Style the job cards container */
+  .job-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  /* Style individual job cards */
+  .job-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    background-color: #ffffff; /* White background */
+    border: 1px solid #e0e0e0; /* Light gray border */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
+  }
+  
+  .job-card:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+  }
+  
+  /* Style job info section within the card */
+  .job-info {
+    margin-bottom: 20px;
+  }
+  
+  .job-info p {
+    margin: 0;
+    color: #555; /* Medium gray text */
+  }
+  
+  /* Style job actions section within the card */
+  .job-actions {
+    margin-top: auto;
+  }
+  
+  /* Style links */
+  a {
+    color: #1e90ff; /* Dodger blue for links */
+  }
+  
+  a:hover {
+    color: #0056b3; /* Darker blue on hover */
+  }
+  
