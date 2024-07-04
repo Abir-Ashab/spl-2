@@ -23,6 +23,8 @@ app.use(cors())
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
+app.use("/uploads",express.static("uploads"));
+
 
 // Get all employees
 app.use('/api/employees', EmployeeRoute)

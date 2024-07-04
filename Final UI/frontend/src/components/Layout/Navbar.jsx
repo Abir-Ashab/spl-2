@@ -49,16 +49,16 @@ const Navbar = () => {
              <li class="dropdown">
             <a href="#">FILTER</a>
             <ul class="dropdown-content">
-              <li><Link to="http://localhost:3000/api/employees/skill" onClick={() => setShow(false)}>
+              <li><Link to="http://localhost:4000/api/v1/resume/skill" onClick={() => setShow(false)}>
                 SE GRADUATE
               </Link></li>
               <li>
-              <Link to="http://localhost:3000/api/employees/cp" onClick={() => setShow(false)}>
+              <Link to="http://localhost:4000/api/v1/resume/cp" onClick={() => setShow(false)}>
                 COMPETITIVE PROGRAMMER
               </Link>
               </li>
               <li>
-              <Link to="http://localhost:3000/api/employees/cg" onClick={() => setShow(false)}>
+              <Link to="http://localhost:4000/api/v1/resume/cg" onClick={() => setShow(false)}>
                 BEST CV
               </Link>
               </li>    

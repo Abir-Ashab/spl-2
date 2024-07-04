@@ -13,8 +13,8 @@ async function processFiles(email) {
       try {
         // Call the function and log the result
         console.log(email);
-        const pdfPath = "E:/spl-2/Final UI/backend/" + await getFilePathByEmail(email);
-        console.log(pdfPath);
+        const pdfPath = "D:\\spl-2\\backend\\" + await getFilePathByEmail(email);
+        console.log("HUNULULU " + pdfPath);
 
         // Call the function to extract text from PDF
         const text = await extractTextFromPDF(pdfPath);
@@ -46,3 +46,4 @@ function extractTextFromPDF(pdfPath) {
   });
 }
 module.exports = {extractTextFromPDF, processFiles};
+// backend\uploads\CV_NAFIS-1717928180457-202617613-1718178245870-194531123.pdf
