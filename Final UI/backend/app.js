@@ -2,6 +2,7 @@ import express from "express";
 import { dbConnection } from "./database/dbConnection.js";
 import jobRouter from "./routes/jobRoutes.js";
 import userRouter from "./routes/userRoutes.js";
+import resumeRouter from "./routes/resumeRoutes.js";
 import applicationRouter from "./routes/applicationRoutes.js";
 import { config } from "dotenv";
 import cors from "cors";
@@ -20,6 +21,8 @@ app.use(
   })
 );
 
+
+
 app.use("/uploads",express.static("uploads"));
 app.use(cookieParser());
 app.use(express.json());
@@ -31,6 +34,7 @@ app.use(express.urlencoded({ extended: true }));
 //     tempFileDir: "/tmp/",
 //   })
 // );
+app.use("/api/v1/resume",resumeRouter);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/job", jobRouter);
 app.use("/api/v1/application", applicationRouter);

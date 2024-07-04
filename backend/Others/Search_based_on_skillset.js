@@ -19,6 +19,7 @@ const Traverse = async (req, res) => {
         
         let finalText = msg.replace(/(\*\*|\n+)/g, " ");
         finalText = finalText.replace(/\*/g, " ");
+        console.log("Final text "+finalText);
 
         // Use a regular expression to extract email addresses
         const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
@@ -26,16 +27,22 @@ const Traverse = async (req, res) => {
 
         console.log(emailArray); // Log the array of emails
         const emails = await retrieveEmails();
+        console.log("application emails "+emails);
         const pdfPaths = [];
+        const finalEmails = [];
         for (const email of emailArray) {
             for (const email2 of emails) {
                 const trimmedEmail2 = email2.trim();  // Trim the email from the list
-                const trimmedEmail = email.trim();    // Trim the email to compare
+                const trimmedEmail = email.trim();
+                console.log("trimmedEmail"+" "+trimmedEmail);
+                console.log("trimmedEmail2"+" "+trimmedEmail2);
+                    // Trim the email to compare
                 if (trimmedEmail2 === trimmedEmail) {
+                    finalEmails.push(trimmedEmail2)
                     const relativePdfPath = await getFilePathByEmail(email2);
                     // http://127.0.0.1:5500/backend/uploads/Resume_Niloy-1717927928687-435225432.pdf
-                    const pdfPath = `http://127.0.0.1:5500/backend/${relativePdfPath}`; // Adjusted path
-                    console.log(pdfPath);
+                    const pdfPath = `http://localhost:3000/${relativePdfPath}`; // Adjusted path
+                    console.log("pdf path: "+pdfPath);
                     pdfPaths.push(pdfPath);
                 }
             }
@@ -122,10 +129,11 @@ const Traverse = async (req, res) => {
             <ul>
         `;
         
-        for (let i = 0; i < emailArray.length; i++) {
+        for (let i = 0; i < finalEmails.length; i++) {
             htmlResponse += `
                 <li>
-                    <span>Email : ${emailArray[i]}</span>
+                    <span>Email : ${finalEmails[i]}</span>
+                    ${pdfPaths[i]}
                     <a href="${pdfPaths[i]}" target="_blank">RESUME</a>
                 </li>
             `;
@@ -164,6 +172,7 @@ const CP = async (req, res) => {
         // Use a regular expression to extract email addresses
         const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
         const emailArray = finalText.match(emailRegex);
+        const finalEmails = [];
 
         console.log(emailArray); // Log the array of emails
         const emails = await retrieveEmails();
@@ -174,8 +183,9 @@ const CP = async (req, res) => {
                 const trimmedEmail = email.trim();    // Trim the email to compare
                 if (trimmedEmail2 === trimmedEmail) {
                     const relativePdfPath = await getFilePathByEmail(email2);
+                    finalEmails.push(trimmedEmail);
                     // http://127.0.0.1:5500/backend/uploads/Resume_Niloy-1717927928687-435225432.pdf
-                    const pdfPath = `http://127.0.0.1:5500/backend/${relativePdfPath}`; // Adjusted path
+                    const pdfPath = `http://localhost:3000/${relativePdfPath}`; // Adjusted path
                     console.log(pdfPath);
                     pdfPaths.push(pdfPath);
                 }
@@ -263,10 +273,10 @@ const CP = async (req, res) => {
             <ul>
         `;
         
-        for (let i = 0; i < emailArray.length; i++) {
+        for (let i = 0; i < finalEmails.length; i++) {
             htmlResponse += `
                 <li>
-                    <span>Email : ${emailArray[i]}</span>
+                    <span>Email : ${finalEmails[i]}</span>
                     <a href="${pdfPaths[i]}" target="_blank">RESUME</a>
                 </li>
             `;
@@ -332,14 +342,16 @@ const CG = async (req, res) => {
     
         const emails = await retrieveEmails();
         const pdfPaths = [];
+        const finalEmails = [];
         for (const email of emailArray) {
             for (const email2 of emails) {
                 const trimmedEmail2 = email2.trim();  // Trim the email from the list
                 const trimmedEmail = email.trim();    // Trim the email to compare
                 if (trimmedEmail2 === trimmedEmail) {
                     const relativePdfPath = await getFilePathByEmail(email2);
+                    finalEmails.push(trimmedEmail);
                     // http://127.0.0.1:5500/backend/uploads/Resume_Niloy-1717927928687-435225432.pdf
-                    const pdfPath = `http://127.0.0.1:5500/backend/${relativePdfPath}`; // Adjusted path
+                    const pdfPath = `http://localhost:3000/${relativePdfPath}`; // Adjusted path
                     console.log(pdfPath);
                     pdfPaths.push(pdfPath);
                 }
@@ -427,10 +439,10 @@ const CG = async (req, res) => {
             <ul>
         `;
         
-        for (let i = 0; i < emailArray.length; i++) {
+        for (let i = 0; i < finalEmails.length; i++) {
             htmlResponse += `
                 <li>
-                    <span>Email: ${emailArray[i]}</span>
+                    <span>Email: ${finalEmails[i]}</span>
                     <a href="${pdfPaths[i]}" target="_blank">RESUME</a>
                 </li>
             `;

@@ -9,7 +9,7 @@ function DataInputForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3000/api/employees/send', {
+      const response = await fetch('http://localhost:4000/api/v1/resume/chatbot', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

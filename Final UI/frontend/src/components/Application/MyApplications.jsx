@@ -91,9 +91,6 @@ const MyApplications = () => {
                 ))}
                 </select>
                   </div>
-                  <div>
-                  <Link to={`/applications/me/filter`}>Use Filter</Link>
-                  </div>
               </div>
 
             ):(
